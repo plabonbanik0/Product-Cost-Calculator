@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <meta
+    name="description"
+    content="Business product costing calculator with profit margin and selling price calculation."
+  />
+  <title>Business Cost Calculator</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <main class="app">
+
+    <header class="topbar">
+      <div class="brand">
+        <small>Business Tool</small>
+        <h1>Product Cost Calculator</h1>
+        <p>
+          Calculate product cost, total order expense, profit margin
+          and suggested selling price from one simple dashboard.
+        </p>
+      </div>
+
+      <div class="badge">Business Ready</div>
+    </header>
+
+    <section class="layout">
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Cost Information</h2>
+          <p>Enter the cost for one product unit.</p>
+        </div>
+
+        <div class="card-body">
+          <form id="calculatorForm">
+
+            <div class="grid">
+
+              <div class="field">
+                <label for="productCost">Product Cost</label>
+
+                <div class="input-wrap">
+                  <span class="prefix">৳</span>
+                  <input
+                    class="money"
+                    id="productCost"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="packagingCost">Packaging Cost</label>
+
+                <div class="input-wrap">
+                  <span class="prefix">৳</span>
+                  <input
+                    class="money"
+                    id="packagingCost"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="deliveryCost">Delivery Cost</label>
+
+                <div class="input-wrap">
+                  <span class="prefix">৳</span>
+                  <input
+                    class="money"
+                    id="deliveryCost"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="shipmentCost">Shipment Cost</label>
+
+                <div class="input-wrap">
+                  <span class="prefix">৳</span>
+                  <input
+                    class="money"
+                    id="shipmentCost"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0.00"
+                  />
+                </div>
+              </div>
+
+              <div class="section-title">
+                Business Calculation
+              </div>
+
+              <div class="field">
+                <label for="quantity">Quantity</label>
+
+                <input
+                  id="quantity"
+                  type="number"
+                  min="1"
+                  step="1"
+                  value="1"
+                />
+              </div>
+
+              <div class="field">
+                <label for="profitMargin">Profit Margin</label>
+
+                <div class="input-wrap">
+                  <input
+                    class="percent"
+                    id="profitMargin"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="20"
+                  />
+                  <span class="suffix">%</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="actions">
+              <button class="primary" type="submit">
+                Calculate Business Cost
+              </button>
+
+              <button
+                class="secondary"
+                type="button"
+                id="resetBtn"
+              >
+                Reset
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <aside class="card">
+
+        <div class="card-head">
+          <h2>Business Summary</h2>
+          <p>Your costing and selling price overview.</p>
+        </div>
+
+        <div class="card-body">
+
+          <div class="summary">
+
+            <div class="summary-box">
+              <div class="summary-label">
+                Cost Per Product
+              </div>
+
+              <div class="summary-value" id="unitCost">
+                ৳0.00
+              </div>
+
+              <div class="summary-note">
+                All four costs combined for one unit.
+              </div>
+            </div>
+
+            <div class="summary-box warning">
+              <div class="summary-label">
+                Total Order Cost
+              </div>
+
+              <div class="summary-value" id="orderCost">
+                ৳0.00
+              </div>
+
+              <div class="summary-note">
+                Unit cost multiplied by quantity.
+              </div>
+            </div>
+
+            <div class="summary-box highlight">
+              <div class="summary-label">
+                Suggested Selling Price
+              </div>
+
+              <div class="summary-value" id="sellingPrice">
+                ৳0.00
+              </div>
+
+              <div class="summary-note">
+                Selling price per product based on your profit margin.
+              </div>
+            </div>
+
+            <div class="summary-box">
+              <div class="summary-label">
+                Estimated Total Profit
+              </div>
+
+              <div class="summary-value" id="totalProfit">
+                ৳0.00
+              </div>
+
+              <div class="summary-note">
+                Estimated profit for the full quantity.
+              </div>
+            </div>
+
+          </div>
+
+          <div class="breakdown">
+
+            <div class="row">
+              <span>Product Cost</span>
+              <strong id="bProduct">৳0.00</strong>
+            </div>
+
+            <div class="row">
+              <span>Packaging Cost</span>
+              <strong id="bPackaging">৳0.00</strong>
+            </div>
+
+            <div class="row">
+              <span>Delivery Cost</span>
+              <strong id="bDelivery">৳0.00</strong>
+            </div>
+
+            <div class="row">
+              <span>Shipment Cost</span>
+              <strong id="bShipment">৳0.00</strong>
+            </div>
+
+            <div class="row">
+              <span>Quantity</span>
+              <strong id="bQuantity">1</strong>
+            </div>
+
+            <div class="row">
+              <span>Profit Margin</span>
+              <strong id="bMargin">20%</strong>
+            </div>
+
+          </div>
+
+        </div>
+      </aside>
+
+    </section>
+
+    <p class="footer-note">
+      Formula: Product Cost + Packaging Cost + Delivery Cost + Shipment Cost
+      = Cost Per Product
+    </p>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
